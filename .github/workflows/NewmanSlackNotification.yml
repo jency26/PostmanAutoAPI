@@ -24,4 +24,4 @@ jobs:
         
    # Run the POSTMAN collection
       - name: Run API Tests
-        run: newman run https://api.getpostman.com/collections/12559118-c097f106-044b-4b9c-9c27-0bd4658f5804?apikey=PMAK-62f1fd2a56d9256ffcb56f73-3c12b6b28917f1471d973d773179de9e47 --suppress-exit-code -r slack --reporter-slack-channel '#postman-integration' --reporter-slack-webhook-url 'https://hooks.slack.com/services/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'
+        run: newman run https://api.getpostman.com/collections/12559118-c097f106-044b-4b9c-9c27-0bd4658f5804?apikey=PMAK-62f1fd2a56d9256ffcb56f73-3c12b6b28917f1471d973d773179de9e47 --suppress-exit-code -r slack --reporter-slack-channel '#postman-integration' --reporter-slack-webhookurl 'https://hooks.slack.com/services/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'
