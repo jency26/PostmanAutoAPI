@@ -15,7 +15,7 @@ jobs:
         uses: actions/setup-node@v2
         with: 
           node-version: '16.x'
-    # Install newman globally
+    # Install newman globally.
       - name: Install newman
         run: |
           npm install -g newman
