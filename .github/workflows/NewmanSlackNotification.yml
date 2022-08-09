@@ -1,6 +1,6 @@
 # This workflow will help you to produce newman test run
 
-name: Newman Tests
+name: Slack Notification Test
 on: [push, pull_request]
 
 jobs:
@@ -10,18 +10,16 @@ jobs:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
       
-   # INstall Node on the runner
+   # Install Node on the runner
       - name: Install Node
         uses: actions/setup-node@v2
         with: 
           node-version: '16.x'
-    
-      # Install newman globally, the reporter for slack and install the html extra reporter
+    # Install newman globally
       - name: Install newman
         run: |
-         npm install -g newman
-         npm install -g newman-reporter-slackreporter
-        
-   # Run the POSTMAN collection.
-      - name: Run API Tests
-        run: newman run https://api.getpostman.com/collections/12559118-c097f106-044b-4b9c-9c27-0bd4658f5804?apikey=PMAK-62f1fd2a56d9256ffcb56f73-3c12b6b28917f1471d973d773179de9e47 --suppress-exit-code -r slackreporter --reporter-slackreporter-webhookurl 'https://hooks.slack.com/services/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' --reporter-slackreporter-chanel '#newman_test_run' 
+          npm install -g newman
+          npm install -g newman-reporter-slackmsg
+   # Run the POSTMAN collection
+      - name: Run Tests
+        run: newman run https://api.getpostman.com/collections/${{secrets.COLLECTION_ID}}?apikey=${{secrets.POSTMAN_API_KEY}} -r slackmsg --reporter-slackmsg-webhookurl ${{secrets.SLACK_WEB_HOOK_URL}} --reporter-slackmsg-chanel '#newman_test_run'
