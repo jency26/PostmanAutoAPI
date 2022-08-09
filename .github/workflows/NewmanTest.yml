@@ -19,8 +19,7 @@ jobs:
     
     # Install the newman command line utility and also install the html extra reporter
       - name: Install newman
-        run: |
-          npm install -g newman
+        run: npm install -g newman
 		  
    # Run the POSTMAN collection
       - name: Run Tests
