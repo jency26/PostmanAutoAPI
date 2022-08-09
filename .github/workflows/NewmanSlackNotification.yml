@@ -24,4 +24,4 @@ jobs:
         
    # Run the POSTMAN collection
       - name: Run API Tests
-        run: newman run https://api.getpostman.com/collections/12559118-c097f106-044b-4b9c-9c27-0bd4658f5804?apikey=PMAK-62f1fd2a56d9256ffcb56f73-3c12b6b28917f1471d973d773179de9e47 -r slackreporter --reporter-slackreporter-webhookurl https://hooks.slack.com/services/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
+        run: newman run https://api.getpostman.com/collections/12559118-c097f106-044b-4b9c-9c27-0bd4658f5804?apikey=PMAK-62f1fd2a56d9256ffcb56f73-3c12b6b28917f1471d973d773179de9e47 -r slackreporter --reporter-slackreporter-webhookurl https://hooks.slack.com/services/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
