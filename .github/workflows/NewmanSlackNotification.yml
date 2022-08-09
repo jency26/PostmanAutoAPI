@@ -20,7 +20,7 @@ jobs:
       - name: Install newman
         run: |
          npm install -g newman
-         npm install -g newman-reporter-slack
+         npm install newman-reporter-slack
         
    # Run the POSTMAN collection
       - name: Run API Tests
