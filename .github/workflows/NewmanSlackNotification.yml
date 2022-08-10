@@ -1,0 +1,25 @@
+# This workflow will help you to produce newman test run
+
+name: Slack Notification Test
+on: [push, pull_request]
+
+jobs:
+  test-api:
+    runs-on: ubuntu-latest
+    steps:
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+      
+   # Install Node on the runner
+      - name: Install Node
+        uses: actions/setup-node@v2
+        with: 
+          node-version: '16.x'
+    # Install newman globally.
+      - name: Install newman
+        run: |
+          npm install -g newman
+          npm install -g newman-reporter-slackmsg
+   # Run the POSTMAN collection
+      - name: Run Tests
+        run: newman run https://api.getpostman.com/collections/${{secrets.COLLECTION_ID}}?apikey=${{secrets.POSTMAN_API_KEY}} -r slackmsg --reporter-slackmsg-webhookurl ${{secrets.SLACK_WEB_HOOK_URL}} --reporter-slackmsg-chanel '#newman_test_run'
